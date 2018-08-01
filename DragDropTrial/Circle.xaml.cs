@@ -22,6 +22,7 @@ namespace DragDropTrial
     {
         private Brush _previousFill = null;
 
+
         public Circle()
         {
             InitializeComponent();

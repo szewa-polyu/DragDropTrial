@@ -11,21 +11,27 @@
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="0"
-            Background="Beige"
-            AllowDrop="True"
-            DragOver="panel_DragOver"
-            Drop="panel_Drop">
+        <StackPanel x:Name="panelA"
+                    Grid.Column="0"
+                    Background="Beige"
+                    AllowDrop="True"
+                    DragOver="panel_DragOver"
+                    Drop="panel_Drop">
             <TextBox Width="Auto" Margin="2"
                      Text="green" />
-            <local:Circle Margin="2" />
-            <local:Circle Margin="2" />
+            <Canvas x:Name="canvasA">
+                <local:Circle Margin="2" />
+                <local:Circle Margin="2" />
+            </Canvas>
         </StackPanel>
-        <StackPanel Grid.Column="1"
-            Background="Bisque"
-            AllowDrop="True"
-            DragOver="panel_DragOver"
-            Drop="panel_Drop">
+        <StackPanel x:Name="panelB"
+                    Grid.Column="1"
+                    Background="Bisque"
+                    AllowDrop="True"
+                    DragOver="panel_DragOver"
+                    Drop="panel_Drop">
+            <Canvas x:Name="canvasB">
+            </Canvas>
         </StackPanel>
     </Grid>
 </Window>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,6 +43,26 @@ namespace DragDropTrial
                 {
                     e.Effects = DragDropEffects.Move;
                 }
+
+                Panel _panel = (Panel)sender;
+                Canvas _canvas;
+                if (_panel == panelA)
+                {
+                    _canvas = canvasA;
+                }
+                else
+                {
+                    _canvas = canvasB;
+                }
+
+                Circle _circle = (Circle)e.Data.GetData("Object");
+
+                Point mousePt = e.GetPosition(_canvas);
+
+                Debug.WriteLine(mousePt);
+
+                Canvas.SetLeft(_circle, mousePt.X - (_circle as Circle).ActualWidth * 0.5);
+                Canvas.SetTop(_circle, mousePt.Y - (_circle as Circle).ActualHeight * 0.5);
             }
         }
 
@@ -52,6 +73,15 @@ namespace DragDropTrial
             if (e.Handled == false)
             {
                 Panel _panel = (Panel)sender;
+                Canvas _canvas;
+                if (_panel == panelA)
+                {
+                    _canvas = canvasA;
+                }
+                else
+                {
+                    _canvas = canvasB;
+                }
                 UIElement _element = (UIElement)e.Data.GetData("Object");
 
                 if (_panel != null && _element != null)
@@ -67,14 +97,31 @@ namespace DragDropTrial
                             e.AllowedEffects.HasFlag(DragDropEffects.Copy))
                         {
                             Circle _circle = new Circle((Circle)_element);
-                            _panel.Children.Add(_circle);
+
+                            Point mousePt = e.GetPosition(_canvas);
+
+                            Debug.WriteLine(mousePt);
+
+                            Canvas.SetLeft(_circle, mousePt.X - (_circle as Circle).ActualWidth * 0.5);
+                            Canvas.SetTop(_circle, mousePt.Y - (_circle as Circle).ActualHeight * 0.5);
+                            
+                            _canvas.Children.Add(_circle);
+
                             // set the value to return to the DoDragDrop call
                             e.Effects = DragDropEffects.Copy;
                         }
                         else if (e.AllowedEffects.HasFlag(DragDropEffects.Move))
                         {
+                            Point mousePt = e.GetPosition(_canvas);
+
+                            Debug.WriteLine(mousePt);
+
+                            Canvas.SetLeft(_element, mousePt.X - (_element as Circle).ActualWidth * 0.5);
+                            Canvas.SetTop(_element, mousePt.Y - (_element as Circle).ActualHeight * 0.5);
+
                             _parent.Children.Remove(_element);
-                            _panel.Children.Add(_element);
+                            _canvas.Children.Add(_element);                            
+
                             // set the value to return to the DoDragDrop call
                             e.Effects = DragDropEffects.Move;
                         }
