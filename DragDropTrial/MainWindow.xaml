@@ -7,6 +7,25 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0"
+            Background="Beige"
+            AllowDrop="True"
+            DragOver="panel_DragOver"
+            Drop="panel_Drop">
+            <TextBox Width="Auto" Margin="2"
+                     Text="green" />
+            <local:Circle Margin="2" />
+            <local:Circle Margin="2" />
+        </StackPanel>
+        <StackPanel Grid.Column="1"
+            Background="Bisque"
+            AllowDrop="True"
+            DragOver="panel_DragOver"
+            Drop="panel_Drop">
+        </StackPanel>
     </Grid>
 </Window>
