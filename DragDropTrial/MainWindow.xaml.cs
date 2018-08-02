@@ -17,6 +17,7 @@ namespace DragDropTrial
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
+    /// https://docs.microsoft.com/en-us/dotnet/framework/wpf/advanced/walkthrough-enabling-drag-and-drop-on-a-user-control
     /// </summary>
     public partial class MainWindow : Window
     {

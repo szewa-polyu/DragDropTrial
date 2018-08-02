@@ -1,26 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace DragDropTrial
 {
     /// <summary>
     /// Interaction logic for Circle.xaml
+    /// https://docs.microsoft.com/en-us/dotnet/framework/wpf/advanced/walkthrough-enabling-drag-and-drop-on-a-user-control
     /// </summary>
     public partial class Circle : UserControl
     {
+        #region members
+
         private Brush _previousFill = null;
+
+        #endregion
+
+
+        #region constructors
 
         public Circle()
         {
@@ -34,6 +32,8 @@ namespace DragDropTrial
             this.circleUI.Width = c.circleUI.Width;
             this.circleUI.Fill = c.circleUI.Fill;
         }
+
+        #endregion
 
 
         #region event handlers
